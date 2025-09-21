@@ -1,0 +1,48 @@
+@startuml
+entity "Paciente" as paciente {
+  * paciente_id : Long <<PK>>
+  --
+  nombre : String
+  apellido : String
+  fecha_nacimiento : Date
+  correo : String
+  telefono : String
+}
+
+entity "Medico" as medico {
+  * medico_id : Long <<PK>>
+  --
+  nombre : String
+  apellido : String
+}
+
+entity "Especialidad" as especialidad {
+  * especialidad_id : Long <<PK>>
+  --
+  nombre : String
+  descripcion : String
+}
+
+entity "Cita" as cita {
+  * cita_id : Long <<PK>>
+  --
+  fecha : Date
+  hora : Time
+  estado : String
+  paciente_id : Long <<FK>>
+  medico_id : Long <<FK>>
+  especialidad_id : Long <<FK>>
+}
+
+entity "Medico_Especialidad" as medico_especialidad {
+  * medico_id : Long <<FK>>
+  * especialidad_id : Long <<FK>>
+}
+
+' Relaciones
+paciente ||--o{ cita : "tiene"
+medico ||--o{ cita : "atiende"
+especialidad ||--o{ cita : "corresponde"
+medico ||--o{ medico_especialidad
+especialidad ||--o{ medico_especialidad
+@enduml

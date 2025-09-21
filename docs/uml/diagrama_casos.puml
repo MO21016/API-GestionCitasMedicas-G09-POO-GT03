@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor "Paciente" as Paciente
+actor "Administrador" as Admin
+actor "Médico" as Medico
+
+rectangle "Sistema de Gestión de Citas Médicas" {
+    usecase "Registrar Médicos" as UC1
+    usecase "Asignar Especialidades a Médico" as UC2
+    usecase "Registrar Pacientes" as UC3
+    usecase "Solicitar Cita" as UC4
+    usecase "Verificar Especialidad del Médico" as UC5
+    usecase "Verificar Disponibilidad del Médico" as UC6
+    usecase "Confirmar Cita" as UC7
+    usecase "Cancelar Cita" as UC9
+    usecase "Consultar Citas Programadas" as UC8
+}
+
+' Relaciones de actores
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+
+Paciente --> UC4
+UC4 --> UC5 : <<include>>
+UC4 --> UC6 : <<include>>
+UC4 --> UC7 : <<include>>
+Paciente --> UC9
+Paciente --> UC8
+
+Medico --> UC8
+Admin --> UC8
+@enduml

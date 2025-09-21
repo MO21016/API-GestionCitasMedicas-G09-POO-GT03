@@ -1,0 +1,54 @@
+@startuml
+' Clases principales con atributos y métodos relevantes
+
+class Medico {
+    - id: Long
+    - nombre: String
+    - apellido: String
+    + getId(): Long
+    + getNombre(): String
+    + getApellido(): String
+}
+
+class Especialidad {
+    - id: Long
+    - nombre: String
+    - descripcion: String
+    + getId(): Long
+    + getNombre(): String
+    + getDescripcion(): String
+}
+
+class Paciente {
+    - id: Long
+    - nombre: String
+    - apellido: String
+    - fechaNacimiento: LocalDate
+    - correo: String
+    - telefono: String
+    + getId(): Long
+    + getNombre(): String
+    + getApellido(): String
+}
+
+class Cita {
+    - id: Long
+    - fecha: LocalDate
+    - hora: LocalTime
+    - estado: String
+    - paciente: Paciente
+    - medico: Medico
+    - especialidad: Especialidad
+    + getId(): Long
+    + getFecha(): LocalDate
+    + getHora(): LocalTime
+    + getEstado(): String
+}
+
+' Relaciones
+Medico "1" -- "*" Cita : atiende
+Paciente "1" -- "*" Cita : solicita
+Medico "*" -- "*" Especialidad : posee
+Especialidad "1" -- "*" Cita : corresponde
+
+@enduml

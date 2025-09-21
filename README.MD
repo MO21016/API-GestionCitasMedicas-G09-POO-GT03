@@ -17,7 +17,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Integrantes del Equipo
+## Integrantes del Equipo 👥
 | Nombre                          | Carnet   |
 |---------------------------------|----------|
 | Jason Alexander Molina Ortiz    | MO21016  |
@@ -28,7 +28,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Tecnologías Utilizadas 
+## Tecnologías Utilizadas ☕
 - **Java 17**
 - **Spring Boot 3.x**
   - Spring Web
@@ -42,7 +42,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Estructura del Proyecto
+## Estructura del Proyecto 📁
 ```
 
 gestioncitasmedicas/
@@ -58,7 +58,7 @@ gestioncitasmedicas/
 
 ---
 
-## Diagramas UML
+## Diagramas UML 📝
 
 Los diagramas que representan el modelo de dominio y la lógica del sistema se encuentran en la carpeta [`docs/uml`](docs/uml)
 

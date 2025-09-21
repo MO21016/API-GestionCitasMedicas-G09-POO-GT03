@@ -1,6 +1,6 @@
 # API de Gestión de Citas Médicas 🩺
 
-## Descripción del Proyecto
+## Descripción del Proyecto 📑
 Este proyecto corresponde al **Proyecto de Ciclo** de la asignatura **Programación Orientada a Objetos (POO)** de la **Universidad de El Salvador – Facultad Multidisciplinaria de Occidente** 
 
 Se trata de una **API RESTful** desarrollada en **Spring Boot**, cuyo objetivo es gestionar el proceso de citas médicas entre pacientes y médicos
@@ -28,7 +28,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Tecnologías Utilizadas ☕
+## Tecnologías Utilizadas ☕✅🌐
 - **Java 17**
 - **Spring Boot 3.x**
   - Spring Web
@@ -111,7 +111,7 @@ Flujos destacados:
 
 ---
 
-## Casos de Uso Principales 🚀 ▶️ ⚡
+## Casos de Uso Principales 🚀 
 
 1. **Registrar pacientes**  
    Permite almacenar los datos de un nuevo paciente en el sistema
@@ -183,6 +183,6 @@ Flujos destacados:
 
 ---
 
-## Licencia
+## Licencia 📜
 
 Este proyecto es de carácter **académico** y fue desarrollado con fines **educativos** en la asignatura **Programación Orientada a Objetos, Ciclo II-2025**, de la **Universidad de El Salvador – Facultad Multidisciplinaria de Occidente**

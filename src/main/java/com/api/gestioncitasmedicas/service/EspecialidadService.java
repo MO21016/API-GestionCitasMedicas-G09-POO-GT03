@@ -34,17 +34,22 @@ public class EspecialidadService {
         return especialidadRepository.save(especialidad);
     }
 
+    public Especialidad actualizarEspecialidad(Long id, Especialidad especialidadActualizada) {
+        Especialidad existente = especialidadRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Especialidad no encontrada"));
+
+        // Actualizar los campos
+        existente.setNombreEspecialidad(especialidadActualizada.getNombreEspecialidad());
+        existente.setDescripcion(especialidadActualizada.getDescripcion());
+
+        return especialidadRepository.save(existente);
+    }
+
+
     // ✅ Eliminar especialidad por ID
-    public void eliminar(Long id) {
-        especialidadRepository.deleteById(id);
+    public void eliminarEspecialidad(Long id) {
+        Especialidad existente = especialidadRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Especialidad no encontrada con ID: " + id));
+        especialidadRepository.delete(existente);
     }
-
-    // Insertar nueva especialidad (verifica duplicados)
-    public Especialidad insertarEspecialidad(Especialidad especialidad) {
-        if (especialidadRepository.findByNombreEspecialidad(especialidad.getNombreEspecialidad()).isPresent()) {
-            throw new RuntimeException("Ya existe una especialidad con ese nombre");
-        }
-        return especialidadRepository.save(especialidad);
-    }
-
 }

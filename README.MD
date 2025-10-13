@@ -1,11 +1,11 @@
-# API de Gestión de Citas Médicas
+# API de Gestión de Citas Médicas 🩺
 
-## Descripción del Proyecto
+## Descripción del Proyecto 📑
 Este proyecto corresponde al **Proyecto de Ciclo** de la asignatura **Programación Orientada a Objetos (POO)** de la **Universidad de El Salvador – Facultad Multidisciplinaria de Occidente** 
 
 Se trata de una **API RESTful** desarrollada en **Spring Boot**, cuyo objetivo es gestionar el proceso de citas médicas entre pacientes y médicos
 
-La API permite:
+💻 La API permite:
 - Registrar **médicos** y sus **especialidades**
 - Registrar **pacientes**
 - Agendar **citas médicas**, verificando:
@@ -17,7 +17,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Integrantes del Equipo
+## Integrantes del Equipo 👥
 | Nombre                          | Carnet   |
 |---------------------------------|----------|
 | Jason Alexander Molina Ortiz    | MO21016  |
@@ -28,7 +28,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Tecnologías Utilizadas
+## Tecnologías Utilizadas☕✅🌐
 - **Java 17**
 - **Spring Boot 3.x**
   - Spring Web
@@ -42,7 +42,7 @@ El desarrollo sigue los principios de **POO, arquitectura en capas (Controller�
 
 ---
 
-## Estructura del Proyecto
+## Estructura del Proyecto 📁
 ```
 
 gestioncitasmedicas/
@@ -58,7 +58,7 @@ gestioncitasmedicas/
 
 ---
 
-## Diagramas UML
+## Diagramas UML 📝
 
 Los diagramas que representan el modelo de dominio y la lógica del sistema se encuentran en la carpeta [`docs/uml`](docs/uml)
 
@@ -111,7 +111,7 @@ Flujos destacados:
 
 ---
 
-## Casos de Uso Principales
+## Casos de Uso Principales🚀 
 
 1. **Registrar pacientes**  
    Permite almacenar los datos de un nuevo paciente en el sistema
@@ -146,7 +146,7 @@ Flujos destacados:
 
 ---
 
-## Cómo ejecutar el proyecto
+## Cómo ejecutar el proyecto 💿 
 
 ### Requisitos previos
 - [Java 17](https://adoptium.net/)
@@ -183,6 +183,6 @@ Flujos destacados:
 
 ---
 
-## Licencia
+## Licencia📜
 
 Este proyecto es de carácter **académico** y fue desarrollado con fines **educativos** en la asignatura **Programación Orientada a Objetos, Ciclo II-2025**, de la **Universidad de El Salvador – Facultad Multidisciplinaria de Occidente**

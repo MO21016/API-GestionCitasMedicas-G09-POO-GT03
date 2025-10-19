@@ -118,7 +118,7 @@ public class CitaController {
         }
     }
 
-    // ✅ Verificar disponibilidad (CORREGIDO)
+    // ✅ Verificar disponibilidad
     @GetMapping("/disponibilidad")
     public ResponseEntity<?> verificarDisponibilidad(
             @RequestParam Long idMedico,

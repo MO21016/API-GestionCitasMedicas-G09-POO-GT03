@@ -38,4 +38,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
 
     // Buscar citas en un rango de fechas
     List<Cita> findByFechaCitaBetween(LocalDate fechaInicio, LocalDate fechaFin);
+
+    // Contar citas de un médico (para validación al eliminar)
+    long countByMedicoIdMedico(Long idMedico);
 }

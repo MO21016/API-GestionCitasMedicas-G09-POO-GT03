@@ -5,19 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
-    // Buscar por correo
-    Optional<Paciente> findByCorreoPaciente(String correoPaciente);
-
-    // Verificar si existe por correo
-    boolean existsByCorreoPaciente(String correoPaciente);
-
-    // Buscar por nombre o apellido (búsqueda parcial)
+    // Buscar por nombre o apellido (búsqueda parcial, case insensitive)
     List<Paciente> findByNombrePacienteContainingIgnoreCaseOrApellidoPacienteContainingIgnoreCase(
             String nombre, String apellido
     );
+
+    // Verificar si existe un paciente con ese correo
+    boolean existsByCorreoPaciente(String correoPaciente);
 }

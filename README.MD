@@ -71,6 +71,7 @@ Este proyecto corresponde al **Proyecto de Ciclo** de la asignatura **Programaci
 | MySQL | 8.x | Base de datos |
 | Maven | 3.x | Gestor de dependencias |
 | JUnit 5 | 5.x | Pruebas unitarias |
+| Mockito | 5.x | Framework de mocking para tests |
 | Postman | Latest | Testing de endpoints |
 
 ---
@@ -92,13 +93,20 @@ gestioncitasmedicas/
 │   │       ├── db/
 │   │       │   ├── schema.sql       # Estructura de tablas
 │   │       │   └── data.sql         # Datos de prueba
-│   └── test/java/...                # Pruebas unitarias
+│   └── test/java/                   # Pruebas unitarias
+│       └── com/api/gestioncitasmedicas/
+│           └── service/
+│               ├── EspecialidadServiceTest.java
+│               ├── PacienteServiceTest.java
+│               ├── MedicoServiceTest.java
+│               ├── MedicoEspecialidadServiceTest.java
+│               └── CitaServiceTest.java
 ├── docs/
 │   ├── uml/                         # Diagramas UML
 │   │   ├── diagrama_clases.png
 │   │   ├── diagrama_entidadRelacion.png
 │   │   └── diagrama_casos.png
-│   └── Gestión Citas Médicas API.postman_collection # Colección de Pruebas para Postman
+│   └── Gestión Citas Médicas API.postman_collection
 ├── pom.xml
 └── README.md
 ```
@@ -336,7 +344,7 @@ Base URL: http://localhost:8080
 
 ### Importar Colección
 1. Abrir Postman
-2. Importar colección desde `/docs/postman/`
+2. Importar colección desde `/docs/`
 3. Configurar variable de entorno:
     - `base_url` = `http://localhost:8080`
     - `api_path` = `/api`
@@ -392,6 +400,123 @@ Content-Type: application/json
   "nuevoEstado": "CONFIRMADA"
 }
 ```
+
+---
+
+## Pruebas Unitarias
+
+El proyecto incluye una suite completa de **60 pruebas unitarias** implementadas con **JUnit 5** y **Mockito**, garantizando la calidad y confiabilidad del código.
+
+### Cobertura de Pruebas
+
+#### **EspecialidadServiceTest** (8 tests)
+- CRUD completo (listar, obtener, crear, actualizar, eliminar)
+- Validación de nombres duplicados
+- Protección de eliminación con médicos asociados
+
+#### **PacienteServiceTest** (12 tests)
+- CRUD completo
+- Validación de correos duplicados al crear y actualizar
+- Cálculo automático de edad
+- Búsqueda por nombre o apellido (case-insensitive)
+- Protección de eliminación con citas asociadas
+- Casos de borde (fecha de nacimiento nula)
+
+#### **MedicoServiceTest** (12 tests)
+- CRUD completo
+- Gestión de relaciones N:M con especialidades
+- Validación de correos duplicados
+- Obtención de especialidades de un médico
+- Protección de eliminación con citas asociadas
+- Eliminación en cascada de relaciones médico-especialidad
+
+#### **MedicoEspecialidadServiceTest** (6 tests)
+- Asignación de especialidades a médicos
+- Validación de médico y especialidad existentes
+- Protección contra relaciones duplicadas
+- Desasignación de especialidades
+- Validación de relación existente antes de eliminar
+
+#### **CitaServiceTest** (22 tests) - El más completo
+**CRUD Básico:**
+- Listar todas las citas
+- Obtener cita por ID
+- Crear, actualizar y eliminar citas
+
+**Validaciones de Negocio (7 validaciones críticas):**
+- Verificación de existencia de paciente
+- Verificación de existencia de médico
+- Verificación de existencia de especialidad
+- Validación de especialidad del médico
+- Validación de días hábiles (rechazo de sábados y domingos)
+- Validación de horarios permitidos (8 slots, rechazo de hora de almuerzo)
+- Validación de disponibilidad del médico
+
+**Estados y Transiciones:**
+- Cambio de estado PENDIENTE → CONFIRMADA
+- Cambio de estado CONFIRMADA → COMPLETADA
+- Rechazo de transiciones inválidas
+
+**Filtros:**
+- Filtrado por médico
+- Filtrado por paciente
+- Filtrado por estado
+
+### Tecnologías de Testing
+
+- **JUnit 5 (Jupiter):** Framework de pruebas unitarias
+- **Mockito:** Framework para crear mocks de dependencias
+- **@Mock:** Simula repositorios sin acceder a la base de datos
+- **@InjectMocks:** Inyecta mocks en el servicio bajo prueba
+- **@BeforeEach:** Inicializa datos de prueba antes de cada test
+
+### Patrón AAA (Arrange-Act-Assert)
+
+Todas las pruebas siguen el patrón estándar:
+```java
+@Test
+void testCrearCita() {
+    // ARRANGE: Preparar datos y configurar mocks
+    when(medicoRepository.findById(1L)).thenReturn(Optional.of(medico));
+    
+    // ACT: Ejecutar el método a probar
+    CitaDTO resultado = citaService.crear(crearDTO);
+    
+    // ASSERT: Verificar el resultado
+    assertNotNull(resultado);
+    assertEquals("PENDIENTE", resultado.getEstadoCita());
+    verify(citaRepository, times(1)).save(any(Cita.class));
+}
+```
+
+### Ejecutar las Pruebas
+```bash
+# Ejecutar todas las pruebas
+mvn test
+
+# Ejecutar pruebas de un servicio específico
+mvn test -Dtest=CitaServiceTest
+
+# Generar reporte de cobertura
+mvn clean test jacoco:report
+```
+
+### Resultados Esperados
+```
+Tests run: 60, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+```
+
+### Beneficios de las Pruebas Unitarias
+
+1. **Confiabilidad:** Garantiza que la lógica de negocio funciona correctamente
+2. **Detección temprana:** Encuentra errores antes de producción
+3. **Documentación viva:** Las pruebas sirven como ejemplos de uso
+4. **Refactoring seguro:** Permite cambiar código con confianza
+5. **Calidad del código:** Fomenta diseño modular y desacoplado
 
 ---
 
@@ -523,7 +648,7 @@ public class GlobalExceptionHandler {
 ```
 
 ---
-mmm
+
 ## Documentación Adicional
 
 ### Diagramas UML
@@ -553,4 +678,9 @@ Interacciones de actores con el sistema:
 
 ---
 
+## Licencia
+
+Este proyecto es de carácter **académico** y fue desarrollado con fines **educativos** en la asignatura **Programación Orientada a Objetos - Ciclo II/2025** de la **Universidad de El Salvador – Facultad Multidisciplinaria de Occidente**.
+
+---
 

@@ -1,10 +1,7 @@
 -- ============================================
--- Script de Creación de Base de Datos
 -- Sistema de Gestión de Citas Médicas
 -- ============================================
 
--- NOTA: Ejecutar primero manualmente en MySQL Workbench
-CREATE DATABASE IF NOT EXISTS gestion_citas_medicas;
 USE gestion_citas_medicas;
 
 -- ============================================
@@ -73,7 +70,7 @@ CREATE TABLE IF NOT EXISTS cita (
     fecha_cita DATE NOT NULL,
     hora_cita TIME NOT NULL,
     motivo_cita VARCHAR(255) NOT NULL,
-    estado_cita ENUM('Pendiente', 'Confirmada', 'Cancelada', 'Completada') NOT NULL DEFAULT 'Pendiente',
+    estado_cita ENUM('PENDIENTE', 'CONFIRMADA', 'CANCELADA', 'COMPLETADA') NOT NULL DEFAULT 'PENDIENTE',
     id_paciente BIGINT NOT NULL,
     id_medico BIGINT NOT NULL,
     id_especialidad BIGINT NOT NULL,

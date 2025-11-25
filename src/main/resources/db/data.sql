@@ -1,5 +1,4 @@
 -- ============================================
--- Script de Datos de Prueba
 -- Sistema de Gestión de Citas Médicas
 -- ============================================
 
@@ -79,26 +78,33 @@ INSERT INTO paciente (nombre_paciente, apellido_paciente, fecha_nacimiento, tele
 -- ============================================
 INSERT INTO cita (fecha_cita, hora_cita, motivo_cita, estado_cita, id_paciente, id_medico, id_especialidad) VALUES
 -- Citas Confirmadas
-('2025-10-15', '08:00:00', 'Chequeo cardiológico de rutina', 'Confirmada', 1, 1, 1),
-('2025-10-15', '09:00:00', 'Control de crecimiento', 'Confirmada', 7, 2, 2),
-('2025-10-15', '10:00:00', 'Consulta por acné', 'Confirmada', 4, 3, 3),
-('2025-10-15', '14:00:00', 'Dolor de rodilla', 'Confirmada', 3, 4, 4),
-('2025-10-16', '08:00:00', 'Control prenatal', 'Confirmada', 6, 5, 5),
+('2025-10-15', '08:00:00', 'Chequeo cardiológico de rutina', 'CONFIRMADA', 1, 1, 1),
+('2025-10-15', '09:00:00', 'Control de crecimiento', 'CONFIRMADA', 7, 2, 2),
+('2025-10-15', '10:00:00', 'Consulta por acné', 'CONFIRMADA', 4, 3, 3),
+('2025-10-15', '14:00:00', 'Dolor de rodilla', 'CONFIRMADA', 3, 4, 4),
+('2025-10-16', '08:00:00', 'Control prenatal', 'CONFIRMADA', 6, 5, 5),
 -- Citas Pendientes
-('2025-10-17', '08:00:00', 'Revisión de vista', 'Pendiente', 8, 6, 6),
-('2025-10-17', '09:00:00', 'Dolor de cabeza recurrente', 'Pendiente', 9, 7, 7),
-('2025-10-17', '10:00:00', 'Consulta por ansiedad', 'Pendiente', 10, 8, 8),
-('2025-10-17', '14:00:00', 'Chequeo general', 'Pendiente', 2, 9, 9),
-('2025-10-18', '08:00:00', 'Limpieza dental', 'Pendiente', 11, 10, 10),
+('2025-10-17', '08:00:00', 'Revisión de vista', 'PENDIENTE', 8, 6, 6),
+('2025-10-17', '09:00:00', 'Dolor de cabeza recurrente', 'PENDIENTE', 9, 7, 7),
+('2025-10-17', '10:00:00', 'Consulta por ansiedad', 'PENDIENTE', 10, 8, 8),
+('2025-10-17', '14:00:00', 'Chequeo general', 'PENDIENTE', 2, 9, 9),
+('2025-10-18', '08:00:00', 'Limpieza dental', 'PENDIENTE', 11, 10, 10),
 -- Citas Completadas
-('2025-10-01', '08:00:00', 'Electrocardiograma', 'Completada', 5, 1, 1),
-('2025-10-02', '09:00:00', 'Vacunación infantil', 'Completada', 11, 12, 2),
-('2025-10-03', '10:00:00', 'Tratamiento dermatológico', 'Completada', 12, 3, 3),
-('2025-10-04', '14:00:00', 'Fisioterapia', 'Completada', 13, 4, 4),
-('2025-10-05', '08:00:00', 'Ecografía', 'Completada', 14, 5, 5),
+('2025-10-01', '08:00:00', 'Electrocardiograma', 'COMPLETADA', 5, 1, 1),
+('2025-10-02', '09:00:00', 'Vacunación infantil', 'COMPLETADA', 11, 12, 2),
+('2025-10-03', '10:00:00', 'Tratamiento dermatológico', 'COMPLETADA', 12, 3, 3),
+('2025-10-04', '14:00:00', 'Fisioterapia', 'COMPLETADA', 13, 4, 4),
+('2025-10-05', '08:00:00', 'Ecografía', 'COMPLETADA', 14, 5, 5),
 -- Citas Canceladas
-('2025-10-20', '08:00:00', 'Consulta oftalmológica', 'Cancelada', 15, 6, 6),
-('2025-10-20', '09:00:00', 'Evaluación neurológica', 'Cancelada', 1, 7, 7),
-('2025-10-20', '10:00:00', 'Terapia psicológica', 'Cancelada', 2, 8, 8),
-('2025-10-21', '08:00:00', 'Consulta general', 'Cancelada', 3, 9, 9),
-('2025-10-21', '09:00:00', 'Extracción dental', 'Cancelada', 4, 10, 10);
+('2025-10-20', '08:00:00', 'Consulta oftalmológica', 'CANCELADA', 15, 6, 6),
+('2025-10-20', '09:00:00', 'Evaluación neurológica', 'CANCELADA', 1, 7, 7),
+('2025-10-20', '10:00:00', 'Terapia psicológica', 'CANCELADA', 2, 8, 8),
+('2025-10-21', '08:00:00', 'Consulta general', 'CANCELADA', 3, 9, 9),
+('2025-10-21', '09:00:00', 'Extracción dental', 'CANCELADA', 4, 10, 10);
+
+-- Mensaje de confirmación
+SELECT 'Datos de prueba insertados exitosamente' AS Estado;
+SELECT COUNT(*) AS 'Total Especialidades' FROM especialidad;
+SELECT COUNT(*) AS 'Total Médicos' FROM medico;
+SELECT COUNT(*) AS 'Total Pacientes' FROM paciente;
+SELECT COUNT(*) AS 'Total Citas' FROM cita;

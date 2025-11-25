@@ -41,17 +41,17 @@ public class Cita {
     private LocalDateTime updatedAt;
 
     // Relación Many-to-One con Paciente
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
 
     // Relación Many-to-One con Medico
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
 
     // Relación Many-to-One con Especialidad
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_especialidad", nullable = false)
     private Especialidad especialidad;
 
@@ -69,21 +69,11 @@ public class Cita {
         updatedAt = LocalDateTime.now();
     }
 
-    // Enum para los estados de la cita
+    // Enum simple para los estados de la cita
     public enum EstadoCita {
-        PENDIENTE("Pendiente"),
-        CONFIRMADA("Confirmada"),
-        CANCELADA("Cancelada"),
-        COMPLETADA("Completada");
-
-        private final String displayName;
-
-        EstadoCita(String displayName) {
-            this.displayName = displayName;
-        }
-
-        public String getDisplayName() {
-            return displayName;
-        }
+        PENDIENTE,
+        CONFIRMADA,
+        CANCELADA,
+        COMPLETADA
     }
 }

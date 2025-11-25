@@ -1,0 +1,2024 @@
+{
+	"info": {
+		"_postman_id": "eac25738-624c-4ae2-9e7a-3a5631606840",
+		"name": "Gestión Citas Médicas API",
+		"description": "API REST para gestión de citas médicas - Proyecto POO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49197961",
+		"_collection_link": "https://mo21016-9784426.postman.co/workspace/Jason-Alexander-Molina-Ortiz's-~3ed64dbd-b747-4919-853b-8093712f6583/collection/49197961-eac25738-624c-4ae2-9e7a-3a5631606840?action=share&source=collection_link&creator=49197961"
+	},
+	"item": [
+		{
+			"name": "HealthCheck",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Listar todos los pacientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un paciente por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente que NO existe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pacientes por nombre",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/buscar?termino=ana",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "termino",
+									"value": "ana"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un paciente nuevo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Laura\",\n  \"apellidoPaciente\": \"Ramírez\",\n  \"fechaNacimiento\": \"1995-08-12\",\n  \"telefonoPaciente\": \"70009999\",\n  \"correoPaciente\": \"laura.ramirez@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Nombre Vacío",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"\",\n  \"apellidoPaciente\": \"Test\",\n  \"fechaNacimiento\": \"1990-01-01\",\n  \"telefonoPaciente\": \"70001111\",\n  \"correoPaciente\": \"test@test.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Fecha de nacimiento futura",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Test\",\n  \"apellidoPaciente\": \"Usuario\",\n  \"fechaNacimiento\": \"2030-01-01\",\n  \"telefonoPaciente\": \"70001111\",\n  \"correoPaciente\": \"test@test.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Teléfono inválido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Test\",\n  \"apellidoPaciente\": \"Usuario\",\n  \"fechaNacimiento\": \"1990-01-01\",\n  \"telefonoPaciente\": \"123\",\n  \"correoPaciente\": \"test@test.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Correo inválido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Test\",\n  \"apellidoPaciente\": \"Usuario\",\n  \"fechaNacimiento\": \"1990-01-01\",\n  \"telefonoPaciente\": \"70001111\",\n  \"correoMedico\": \"no-es-email\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Correo duplicado",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Otro\",\n  \"apellidoPaciente\": \"Paciente\",\n  \"fechaNacimiento\": \"1990-01-01\",\n  \"telefonoPaciente\": \"70001111\",\n  \"correoPaciente\": \"ana.martinez@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un paciente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Laura María\",\n  \"apellidoPaciente\": \"Ramírez García\",\n  \"fechaNacimiento\": \"1995-08-12\",\n  \"telefonoPaciente\": \"70008888\",\n  \"correoPaciente\": \"lauramaria.ramirez@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/16",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualización parcial (solo teléfono)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telefonoPaciente\": \"70007777\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/16",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar fecha de nacimiento (recalcula edad)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fechaNacimiento\": \"2000-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/16",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar paciente que no existe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombrePaciente\": \"Test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar paciente SIN citas",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/16",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Intentar eliminar paciente CON citas",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/pacientes/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "Obtener todas las Especialidades",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener una Especialidad en específico",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener una Especialidad que NO existe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una especialidad nueva",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"Oncología\",\n  \"descripcion\": \"Tratamiento médico del cáncer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Nombre vacío",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"\",\n  \"descripcion\": \"Test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Nombre duplicado",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"Cardiología\",\n  \"descripcion\": \"Ya existe\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar una Especialidad",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"Oncología Médica\",\n  \"descripcion\": \"Tratamiento médico del cáncer con quimioterapia y radioterapia\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/11",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualización parcial (solo descripción)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descripcion\": \"Nueva descripción actualizada\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/11",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Especialidad que no existe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"Test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar especialidad sin médicos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/11",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Intentar eliminar especialidad CON médicos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/especialidades/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"especialidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medicos",
+			"item": [
+				{
+					"name": "Listar todos los médicos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un médico por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Médico que NO existe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener especialidades de un médico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/1/especialidades",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"1",
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un médico nuevo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Juan\",\n  \"apellidoMedico\": \"Pérez\",\n  \"telefonoMedico\": \"77009999\",\n  \"correoMedico\": \"juan.perez@hospital.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Nombre Vacío",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"\",\n  \"apellidoMedico\": \"Test\",\n  \"telefonoMedico\": \"77001111\",\n  \"correoMedico\": \"test@test.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Teléfono Inválido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Test\",\n  \"apellidoMedico\": \"Usuario\",\n  \"telefonoMedico\": \"123\",\n  \"correoMedico\": \"test@test.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Correo Inválido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Test\",\n  \"apellidoMedico\": \"Usuario\",\n  \"telefonoMedico\": \"77001111\",\n  \"correoMedico\": \"no-es-email\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Correo Duplicado",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Otro\",\n  \"apellidoMedico\": \"Médico\",\n  \"telefonoMedico\": \"77001111\",\n  \"correoMedico\": \"carlos.rodriguez@hospital.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un médico",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Juan Carlos\",\n  \"apellidoMedico\": \"Pérez García\",\n  \"telefonoMedico\": \"77008888\",\n  \"correoMedico\": \"juancarlos.perez@hospital.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/13",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualización parcial (solo teléfono)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telefonoMedico\": \"77007777\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/13",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Médico que no existe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telefonoMedico\": \"77007777\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/999",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar médico SIN citas",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/13",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Intentar eliminar médico CON citas",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/medicos/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Citas",
+			"item": [
+				{
+					"name": "Listar todas las citas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener una cita por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar citas por médico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas?medico=1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							],
+							"query": [
+								{
+									"key": "medico",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar citas por paciente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas?paciente=1",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							],
+							"query": [
+								{
+									"key": "paciente",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar citas por estado",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas?estado=PENDIENTE",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "PENDIENTE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una cita VÁLIDA",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-10\",\n  \"horaCita\": \"09:00:00\",\n  \"motivoCita\": \"Consulta general de seguimiento\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Médico sin esa especialidad ",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 5,\n  \"fechaCita\": \"2025-11-11\",\n  \"horaCita\": \"10:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Fin de semana (sábado)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-08\",\n  \"horaCita\": \"09:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Fin de semana (domingo)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-09\",\n  \"horaCita\": \"09:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Hora de almuerzo (12:00)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-10\",\n  \"horaCita\": \"12:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Horario inválido (17:00)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-10\",\n  \"horaCita\": \"17:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Médico ocupado (duplicado) ",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 2,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2025-11-12\",\n  \"horaCita\": \"14:00:00\",\n  \"motivoCita\": \"Primera cita\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Fecha en el pasado",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"idEspecialidad\": 1,\n  \"fechaCita\": \"2020-01-01\",\n  \"horaCita\": \"09:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validación - Campos obligatorios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idPaciente\": 1,\n  \"idMedico\": 1,\n  \"fechaCita\": \"2025-11-10\",\n  \"horaCita\": \"09:00:00\",\n  \"motivoCita\": \"Consulta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar estado PENDIENTE → CONFIRMADA",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nuevoEstado\": \"CONFIRMADA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21/estado?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar estado CONFIRMADA → COMPLETADA",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nuevoEstado\": \"COMPLETADA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21/estado?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar estado COMPLETADA → PENDIENTE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nuevoEstado\": \"PENDIENTE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21/estado?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estado inválido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nuevoEstado\": \"HELLOWORLD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21/estado?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar fecha y hora de cita",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fechaCita\": \"2025-11-28\",\n  \"horaCita\": \"13:00:00\",\n  \"motivoCita\": \"Consulta actualizada\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/22?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"22"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Intentar actualizar cita COMPLETADA",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"motivoCita\": \"Intento de actualización\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21?Content-Type=application/json",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cita PENDIENTE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/22",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Intentar eliminar cita COMPLETADA",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_path}}/citas/21",
+							"host": [
+								"{{base_url}}{{api_path}}"
+							],
+							"path": [
+								"citas",
+								"21"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
